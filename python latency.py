@@ -22,20 +22,20 @@ if int(choice) == 1:
 			if "Average" in pingoutputline:
 				#piece = pingoutputline.split("/")[4]
 				piece = pingoutputline.split("Average")[1].split("ms")[0].split("= ")[1]
-				results.append({"Name":host["Name"],"Average":int(piece),"Average Line":pingoutputline})
+				results.append({"Name":host["Name"],"Average":float(piece),"Average Line":pingoutputline})
 else:
 	print "You chose Mac"
 	for host in hosts:
 		print "Completion " + str(i)
 		i=i+1
-		ping = subprocess.Popen(    ["ping", "-c", "3", host],    stdout = subprocess.PIPE,    stderr = subprocess.PIPE)
+		ping = subprocess.Popen(    ["ping", "-c", "3", host["ip"]],    stdout = subprocess.PIPE,    stderr = subprocess.PIPE)
 		#ping = subprocess.Popen(["ping", "-n", "3", host["ip"]], stdout = subprocess.PIPE)
 		for pingoutputline in ping.stdout.readlines():
 			if "avg" in pingoutputline:
 			#if "Average" in pingoutputline:
 				piece = pingoutputline.split("/")[4]
 				#piece = pingoutputline.split("Average")[1].split("ms")[0].split("= ")[1]
-				results.append({"Name":host["Name"],"Average":int(piece),"Average Line":pingoutputline})
+				results.append({"Name":host["Name"],"Average":float(piece),"Average Line":pingoutputline})
 
 
 results = sorted(results, key= lambda k: k["Average"])
