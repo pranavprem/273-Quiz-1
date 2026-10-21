@@ -1,0 +1,4 @@
+# Runtime dependencies: none. latency.py uses the Python standard library.
+# Pins below are the dev tools used by tests and CI.
+pytest==9.1.1
+ruff==0.17.0

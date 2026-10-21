@@ -1,0 +1,13 @@
+# Tooling only. latency.py has no third-party runtime dependencies.
+# Install the pinned tools from requirements-dev.txt.
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
